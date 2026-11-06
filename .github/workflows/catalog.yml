@@ -5,8 +5,7 @@
 #
 # Секреты репозитория (Settings → Secrets and variables → Actions):
 #   VK_SERVICE_TOKEN — сервисный ключ доступа приложения 54881400
-# Переменные (там же, вкладка Variables):
-#   VK_ALBUM_ID      — ID альбома «Новые значки» в сообществе club243034935
+# Альбом «Новые значки»: vk.com/album-243034935_312442377 (можно переопределить переменной VK_ALBUM_ID)
 name: catalog
 on:
   schedule:
@@ -20,6 +19,8 @@ concurrency: catalog
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      HAS_VK_TOKEN: ${{ secrets.VK_SERVICE_TOKEN != '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -29,11 +30,11 @@ jobs:
 
       - name: Забрать значки из альбома ВКонтакте
         id: sync
-        if: ${{ vars.VK_ALBUM_ID != '' }}
+        if: ${{ env.HAS_VK_TOKEN == 'true' }}
         env:
           VK_SERVICE_TOKEN: ${{ secrets.VK_SERVICE_TOKEN }}
           VK_GROUP_ID: '243034935'
-          VK_ALBUM_ID: ${{ vars.VK_ALBUM_ID }}
+          VK_ALBUM_ID: ${{ vars.VK_ALBUM_ID || '312442377' }}
         run: |
           set +e
           python3 tools/sync_vk_album.py
