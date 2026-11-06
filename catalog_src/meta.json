@@ -1,0 +1,202 @@
+[
+  {
+    "id": "france",
+    "name": "France",
+    "series": "Флаги и страны"
+  },
+  {
+    "id": "abkhazia-flag",
+    "name": "Флаг Абхазии",
+    "series": "Флаги и страны"
+  },
+  {
+    "id": "tricolor-flag",
+    "name": "Флаг-триколор",
+    "series": "Флаги и страны"
+  },
+  {
+    "id": "abkhazia-shield",
+    "name": "Герб Абхазии",
+    "series": "Флаги и страны"
+  },
+  {
+    "id": "buryatia-1",
+    "name": "Бурятия",
+    "series": "Регионы России"
+  },
+  {
+    "id": "buryatia-2",
+    "name": "Бурятия (второй)",
+    "series": "Регионы России"
+  },
+  {
+    "id": "baikal",
+    "name": "Байкал",
+    "series": "Регионы России"
+  },
+  {
+    "id": "pittsburgh",
+    "name": "Pittsburgh",
+    "series": "Флаги и страны"
+  },
+  {
+    "id": "italia",
+    "name": "Italia",
+    "series": "Флаги и страны"
+  },
+  {
+    "id": "pokrov",
+    "name": "Покров на Нерли",
+    "series": "Достопримечательности"
+  },
+  {
+    "id": "kungur",
+    "name": "Кунгурская ледяная пещера",
+    "series": "Достопримечательности"
+  },
+  {
+    "id": "irkutsk-small",
+    "name": "Иркутск (малый)",
+    "series": "Гербы городов"
+  },
+  {
+    "id": "perm",
+    "name": "Пермь",
+    "series": "Гербы городов"
+  },
+  {
+    "id": "vladimir-1",
+    "name": "Владимир",
+    "series": "Гербы городов"
+  },
+  {
+    "id": "vladimir-2",
+    "name": "Владимир (второй)",
+    "series": "Гербы городов"
+  },
+  {
+    "id": "kostroma",
+    "name": "Кострома",
+    "series": "Гербы городов"
+  },
+  {
+    "id": "sevastopol",
+    "name": "Севастополь",
+    "series": "Гербы городов"
+  },
+  {
+    "id": "nizhny",
+    "name": "Нижний Новгород",
+    "series": "Гербы городов"
+  },
+  {
+    "id": "suzdal",
+    "name": "Суздаль",
+    "series": "Гербы городов"
+  },
+  {
+    "id": "moskva",
+    "name": "Москва",
+    "series": "Гербы городов"
+  },
+  {
+    "id": "kazan",
+    "name": "Казань",
+    "series": "Гербы городов"
+  },
+  {
+    "id": "irkutsk-big",
+    "name": "Иркутск",
+    "series": "Гербы городов"
+  },
+  {
+    "id": "sun-seal",
+    "name": "Солнце и нерпа",
+    "series": "Регионы России"
+  },
+  {
+    "id": "smolensk",
+    "name": "Смоленск",
+    "series": "Гербы городов"
+  },
+  {
+    "id": "gto",
+    "name": "ГТО СССР",
+    "series": "Разное"
+  },
+  {
+    "id": "kabardino",
+    "name": "Кабардино-Балкарская Республика",
+    "series": "Регионы России"
+  },
+  {
+    "id": "dagestan",
+    "name": "Республика Дагестан",
+    "series": "Регионы России"
+  },
+  {
+    "id": "chechnya",
+    "name": "Чеченская Республика",
+    "series": "Регионы России"
+  },
+  {
+    "id": "carnation",
+    "name": "Гвоздика",
+    "series": "Победа"
+  },
+  {
+    "id": "pobeda-80",
+    "name": "80 лет Победы",
+    "series": "Победа"
+  },
+  {
+    "id": "milano",
+    "name": "Milano",
+    "series": "Флаги и страны"
+  },
+  {
+    "id": "russia-flag",
+    "name": "Флаг России",
+    "series": "Флаги и страны"
+  },
+  {
+    "id": "egypt-flag",
+    "name": "Флаг Египта",
+    "series": "Флаги и страны"
+  },
+  {
+    "id": "tunisia-flag",
+    "name": "Флаг Туниса",
+    "series": "Флаги и страны"
+  },
+  {
+    "id": "turkey-flag",
+    "name": "Флаг Турции",
+    "series": "Флаги и страны"
+  },
+  {
+    "id": "belarus-flag",
+    "name": "Флаг Беларуси",
+    "series": "Флаги и страны"
+  },
+  {
+    "id": "lyublyu-rodinu",
+    "name": "«Я люблю свою Родину»",
+    "series": "Победа"
+  },
+  {
+    "id": "kontakt-bar",
+    "name": "Контакт бар",
+    "series": "Разное"
+  },
+  {
+    "id": "zenit",
+    "name": "Зенит",
+    "series": "Разное"
+  },
+  {
+    "id": "yandex-robot",
+    "name": "Робот-курьер",
+    "series": "Разное"
+  }
+]

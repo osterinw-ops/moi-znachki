@@ -1,0 +1,64 @@
+# Автообновление каталога (бесплатно в GitHub Actions, своего сервера не нужно):
+#  1) забирает новые значки из альбома сообщества ВКонтакте (tools/sync_vk_album.py);
+#  2) пересобирает каталог: фон, контур, цвета, векторы для нейросети;
+#  3) коммитит public/catalog/ и сбрасывает кэш jsDelivr — приложение видит новые значки.
+#
+# Секреты репозитория (Settings → Secrets and variables → Actions):
+#   VK_SERVICE_TOKEN — сервисный ключ доступа приложения 54881400
+# Переменные (там же, вкладка Variables):
+#   VK_ALBUM_ID      — ID альбома «Новые значки» в сообществе club243034935
+name: catalog
+on:
+  schedule:
+    - cron: '17 */3 * * *' # каждые 3 часа
+  push:
+    paths: ['catalog_src/**', 'tools/**', 'src/recognition/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: catalog
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+
+      - name: Забрать значки из альбома ВКонтакте
+        id: sync
+        if: ${{ vars.VK_ALBUM_ID != '' }}
+        env:
+          VK_SERVICE_TOKEN: ${{ secrets.VK_SERVICE_TOKEN }}
+          VK_GROUP_ID: '243034935'
+          VK_ALBUM_ID: ${{ vars.VK_ALBUM_ID }}
+        run: |
+          set +e
+          python3 tools/sync_vk_album.py
+          code=$?
+          if [ $code -eq 3 ]; then echo "changed=false" >> $GITHUB_OUTPUT; exit 0; fi
+          if [ $code -ne 0 ]; then exit $code; fi
+          echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Пересобрать каталог
+        if: ${{ github.event_name != 'schedule' || steps.sync.outputs.changed == 'true' }}
+        run: |
+          pip install opencv-python-headless numpy
+          npm ci --ignore-scripts
+          npm run ort
+          npm run catalog
+
+      - name: Сохранить и сбросить кэш CDN
+        if: ${{ github.event_name != 'schedule' || steps.sync.outputs.changed == 'true' }}
+        run: |
+          git config user.name "catalog-bot"
+          git config user.email "catalog-bot@users.noreply.github.com"
+          git add catalog_src public/catalog
+          if git diff --cached --quiet; then echo "Без изменений"; exit 0; fi
+          git commit -m "Каталог обновлён: значки из альбома сообщества"
+          git push
+          for f in catalog.json embeddings.json embeddings-nn.bin; do
+            curl -s "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@main/public/catalog/$f" > /dev/null || true
+          done

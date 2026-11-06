@@ -1,0 +1,40 @@
+{
+  "name": "moi-znachki",
+  "version": "0.1.0",
+  "description": "Мои значки — VK Mini App без сервера",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "catalog": "python3 tools/build_catalog.py catalog_src public/catalog && tsx tools/embed.ts",
+    "catalog:embed": "tsx tools/embed.ts",
+    "eval": "python3 tools/demo/make_test_photos.py && tsx tools/eval.ts",
+    "demo": "tsx tools/embed-catalog-module.ts && DEMO=1 vite build; cp src/catalog/embedded.stub.ts src/catalog/embedded.generated.ts",
+    "deploy": "npm run build && vk-miniapps-deploy",
+    "ort": "node tools/copy-ort.mjs",
+    "postinstall": "npm run ort"
+  },
+  "dependencies": {
+    "@vkontakte/icons": "^3.80.0",
+    "@vkontakte/vk-bridge": "^3.0.2",
+    "@vkontakte/vkui": "^8.4.3",
+    "onnxruntime-web": "^1.31.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/pngjs": "^6.0.5",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^6.2.1",
+    "@vkontakte/vk-miniapps-deploy": "^1.0.3",
+    "pngjs": "^7.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.6",
+    "vite-plugin-singlefile": "^2.3.4"
+  },
+  "private": true,
+  "type": "module"
+}
