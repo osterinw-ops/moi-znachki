@@ -5,7 +5,9 @@
 
 /** Откуда грузить каталог: относительный путь (VK-хостинг) или CDN, например
  *  https://cdn.jsdelivr.net/gh/<user>/<repo>@main/public/catalog/ */
-export const CATALOG_URL: string = import.meta.env.VITE_CATALOG_URL || './catalog/';
+export const CATALOG_URL: string =
+  import.meta.env.VITE_CATALOG_URL ||
+  (import.meta.env.DEV ? './catalog/' : 'https://cdn.jsdelivr.net/gh/osterinw-ops/moi-znachki@main/public/catalog/');
 
 /** Куда вести пользователя с предложением нового значка (сообщения сообщества и т. п.). */
 export const SUGGEST_URL: string = import.meta.env.VITE_SUGGEST_URL || '';
